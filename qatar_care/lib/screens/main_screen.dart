@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qatar_care/base/basic_scaffold.dart';
+import 'package:qatar_care/screens/service_3.dart';
+import 'package:qatar_care/screens/service_4.dart';
 
-import 'guest2.dart';
-import 'guest_screen.dart';
+import 'service_2.dart';
+import 'service_1.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -11,8 +13,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex=2;
-  Widget pages=GuestScreen();
+  int _selectedIndex=0;
+  Widget pages=GuestScreenOne();
   @override
   Widget build(BuildContext context) {
     final _height = MediaQuery.of(context).size.height;
@@ -112,10 +114,10 @@ class _MainScreenState extends State<MainScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            BottomNavTile(Icons.home_outlined, 0,GuestScreen()),
-                            BottomNavTile(Icons.dock, 1,GuestScreen2()),
-                            BottomNavTile(Icons.search_off_outlined, 2,GuestScreen()),
-                            BottomNavTile(Icons.person_outline_outlined, 3,GuestScreen()),
+                            BottomNavTile(Icons.home_outlined, 0,GuestScreenOne()),
+                            BottomNavTile(Icons.dock, 1,GuestScreenTwo()),
+                            BottomNavTile(Icons.search_off_outlined, 2,GuestScreenThree()),
+                            BottomNavTile(Icons.person_outline_outlined, 3,GuestScreenFour()),
                           ],
                         ),
                       ),
