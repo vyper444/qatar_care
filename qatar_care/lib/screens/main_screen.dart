@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qatar_care/base/basic_scaffold.dart';
 
@@ -17,15 +18,16 @@ class _MainScreenState extends State<MainScreen> {
     final _height = MediaQuery.of(context).size.height;
     final _width = MediaQuery.of(context).size.width;
     final _fontstyles = 'Roboto sans-serif';
-    return Scaffold(
-      body: Container(
+    return BasicScaffold(
+      child:Container(
+        color: Color(0xFF7EAF3C),
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         width: double.infinity,
-        color: Color(0xFF7EAF3C),
         child: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.only(left: 20, right: 20),
+              color: Color(0xFF7EAF3C),
+              padding: EdgeInsets.only(left: 20, right: 20,),
               width: double.infinity,
               height: _height * 0.1,
               child: Row(
@@ -56,61 +58,73 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
             Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(40),
-                      topRight: Radius.circular(40)),
-                ),
-                width: double.infinity,
-                height: double.infinity,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      pages,
-                      Container(
-                        width: double.infinity,
-                        height: _height * 0.05,
-                        color: Color(0xFF7EAF3C),
-                        child: Text(
-                          "Copyright ©2018 QuatarCare. All Rights Reserved",
-                          style: TextStyle(color: Colors.white, fontSize: 12),
-                          textAlign: TextAlign.center,
+              child: Stack(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40),
+                          topRight: Radius.circular(40)),
+                    ),
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          pages,
+                          Container(
+                            width: double.infinity,
+                            height: _height * 0.15,
+                            color: Color(0xFF7EAF3C),
+                            child: Text(
+                              "Copyright ©2018 QuatarCare. All Rights Reserved",
+                              style: TextStyle(color: Colors.white, fontSize: 12),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom:0,
+                    right:0,
+                    left:0,
+                    child: Container(
+                      height: _height * 0.1,
+                      width:double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0),
+                          topRight: Radius.circular(30.0),
+                        ),
+                        boxShadow: [
+                          BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 20),
+                        ],
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30.0),
+                          topRight: Radius.circular(30.0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            BottomNavTile(Icons.home_outlined, 0,GuestScreen()),
+                            BottomNavTile(Icons.dock, 1,GuestScreen2()),
+                            BottomNavTile(Icons.search_off_outlined, 2,GuestScreen()),
+                            BottomNavTile(Icons.person_outline_outlined, 3,GuestScreen()),
+                          ],
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ],
-        ),
-      ),
-      bottomNavigationBar: Container(
-        height: _height * 0.1,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30), topLeft: Radius.circular(30)),
-          boxShadow: [
-            BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
-          ],
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0),
-            topRight: Radius.circular(30.0),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              BottomNavTile(Icons.home_outlined, 0,GuestScreen()),
-              BottomNavTile(Icons.dock, 1,GuestScreen2()),
-              BottomNavTile(Icons.search_off_outlined, 2,GuestScreen()),
-              BottomNavTile(Icons.person_outline_outlined, 3,GuestScreen()),
-            ],
-          ),
         ),
       ),
     );
