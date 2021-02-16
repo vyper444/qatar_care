@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class GuestScreen extends StatefulWidget {
   @override
@@ -6,6 +7,19 @@ class GuestScreen extends StatefulWidget {
 }
 
 class _GuestScreenState extends State<GuestScreen> {
+  Widget Contact_info(String label,String info){
+    return Container(
+      width:double.infinity,
+      padding: const EdgeInsets.only(top:15,bottom:15),
+      child: Column(
+        crossAxisAlignment:CrossAxisAlignment.start,
+        children: [
+          Text(label,style:TextStyle(fontWeight:FontWeight.bold,color:Colors.black)),
+          Text(info,style:TextStyle(fontWeight:FontWeight.normal,color:Color(0xFF464552))),
+        ],
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     final _height = MediaQuery.of(context).size.height;
@@ -100,7 +114,7 @@ class _GuestScreenState extends State<GuestScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top:20),
+            padding: const EdgeInsets.only(top:20,bottom:20),
             child: Row(
               mainAxisAlignment:MainAxisAlignment.spaceEvenly,
               children: [
@@ -111,6 +125,92 @@ class _GuestScreenState extends State<GuestScreen> {
               ],
             ),
           ),
+          Text(
+            'View other services care',
+            style: TextStyle(
+                color: Color(0xFF707070),
+                fontWeight: FontWeight.bold,
+                fontSize: 14),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20,bottom:20),
+            child: Divider(
+              color: Color(0xFFA9B8C1),
+            ),
+          ),
+          Row(
+            mainAxisAlignment:MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Website',
+                textAlign:TextAlign.left,
+                style: TextStyle(
+                    color: Color(0xFF7EAF3C),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
+              Icon(Icons.public,size:20,color:Color(0xFF7EAF3C)),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20,bottom:20),
+            child: Divider(
+              color: Color(0xFFA9B8C1),
+            ),
+          ),
+          Row(
+            mainAxisAlignment:MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Social Media',
+                textAlign:TextAlign.left,
+                style: TextStyle(
+                    color: Color(0xFF7EAF3C),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left:8.0),
+                    child: FaIcon(FontAwesomeIcons.instagram,size:20,color:Color(0xFF7EAF3C)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left:8.0),
+                    child: FaIcon(FontAwesomeIcons.twitter,size:20,color:Color(0xFF7EAF3C)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left:8.0),
+                    child: FaIcon(FontAwesomeIcons.facebook,size:20,color:Color(0xFF7EAF3C)),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20,bottom:20),
+            child: Divider(
+              color: Color(0xFFA9B8C1),
+            ),
+          ),
+          Align(
+            alignment:Alignment.topLeft,
+            child: Column(
+              children: [
+                Text(
+                  'Contact us',
+                  textAlign:TextAlign.left,
+                  style: TextStyle(
+                      color: Color(0xFF7EAF3C),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20),
+                ),
+              ],
+            ),
+          ),
+          Contact_info('Call us','Phone: +(974) 4447 7789'),
+          Contact_info('Address','7th Floor, Unit 706, Al Qamra Holding Group,\nAl-Difaaf Street, Al-Sadd, Doha, Qatar'),
+          Contact_info('Email','info@qatarcare.net'),
         ],
       ),
     );

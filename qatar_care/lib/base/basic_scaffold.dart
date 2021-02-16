@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 class BasicScaffold extends StatelessWidget{
   var child;
-
-
   BasicScaffold({this.child});
   @override
   Widget build(BuildContext context) {

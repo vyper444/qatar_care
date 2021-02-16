@@ -65,7 +65,23 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 width: double.infinity,
                 height: double.infinity,
-                child: SingleChildScrollView(child:pages),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      pages,
+                      Container(
+                        width: double.infinity,
+                        height: _height * 0.05,
+                        color: Color(0xFF7EAF3C),
+                        child: Text(
+                          "Copyright ©2018 QuatarCare. All Rights Reserved",
+                          style: TextStyle(color: Colors.white, fontSize: 12),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ],
@@ -90,7 +106,7 @@ class _MainScreenState extends State<MainScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               BottomNavTile(Icons.home_outlined, 0,GuestScreen()),
-              BottomNavTile(Icons.dock, 1,Myapp()),
+              BottomNavTile(Icons.dock, 1,GuestScreen2()),
               BottomNavTile(Icons.search_off_outlined, 2,GuestScreen()),
               BottomNavTile(Icons.person_outline_outlined, 3,GuestScreen()),
             ],
