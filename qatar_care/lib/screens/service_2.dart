@@ -5,12 +5,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'custom_expansion_tile.dart';
 import 'service_2.dart';
 
-class GuestScreenTwo extends StatefulWidget {
+class ServiceScreenTwo extends StatefulWidget {
   @override
-  _GuestScreenTwoState createState() => _GuestScreenTwoState();
+  _ServiceScreenTwoState createState() => _ServiceScreenTwoState();
 }
 
-class _GuestScreenTwoState extends State<GuestScreenTwo> {
+class _ServiceScreenTwoState extends State<ServiceScreenTwo> {
   Widget contactInformation(String label, String info) {
     return Container(
       width: double.infinity,
@@ -147,10 +147,10 @@ class _GuestScreenTwoState extends State<GuestScreenTwo> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                services(GuestScreenTwo(),"images/icons/icon1.png"),
-                services(GuestScreenTwo(),"images/icons/icon_g_2.png"),
-                services(GuestScreenTwo(),"images/icons/icon3.png"),
-                services(GuestScreenTwo(),"images/icons/icon4.png"),
+                services(ServiceScreenTwo(),"images/icons/icon1.png"),
+                services(ServiceScreenTwo(),"images/icons/icon_g_2.png"),
+                services(ServiceScreenTwo(),"images/icons/icon3.png"),
+                services(ServiceScreenTwo(),"images/icons/icon4.png"),
               ],
             ),
           ),

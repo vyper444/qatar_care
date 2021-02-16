@@ -14,7 +14,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex=0;
-  Widget pages=GuestScreenOne();
+  Widget pages=ServiceScreenOne();
   @override
   Widget build(BuildContext context) {
     final _height = MediaQuery.of(context).size.height;
@@ -114,10 +114,10 @@ class _MainScreenState extends State<MainScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            BottomNavTile(Icons.home_outlined, 0,GuestScreenOne()),
-                            BottomNavTile(Icons.dock, 1,GuestScreenTwo()),
-                            BottomNavTile(Icons.search_off_outlined, 2,GuestScreenThree()),
-                            BottomNavTile(Icons.person_outline_outlined, 3,GuestScreenFour()),
+                            BottomNavTile(Icons.home_outlined, 0,ServiceScreenOne()),
+                            BottomNavTile(Icons.dock, 1,ServiceScreenTwo()),
+                            BottomNavTile(Icons.search_off_outlined, 2,ServiceScreenThree()),
+                            BottomNavTile(Icons.person_outline_outlined, 3,ServiceScreenFour()),
                           ],
                         ),
                       ),
