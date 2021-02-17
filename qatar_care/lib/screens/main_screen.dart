@@ -1,22 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:qatar_care/base/basic_scaffold.dart';
-import 'package:qatar_care/screens/service_3.dart';
-import 'package:qatar_care/screens/service_4.dart';
+import 'package:qatar_care/screens/Guest/service_3.dart';
+import 'package:qatar_care/screens/Guest/service_4.dart';
 
-import 'service_2.dart';
-import 'service_1.dart';
+import 'Guest/service_2.dart';
+import 'Guest/service_1.dart';
 
 class MainScreen extends StatefulWidget {
+  final Widget pageName;
+  MainScreen({this.pageName});
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex=0;
-  Widget pages=ServiceScreenOne();
+  Widget pages;
   @override
   Widget build(BuildContext context) {
+    pages=widget.pageName;
     final _height = MediaQuery.of(context).size.height;
     final _width = MediaQuery.of(context).size.width;
     final _fontstyles = 'Roboto sans-serif';
@@ -66,8 +69,8 @@ class _MainScreenState extends State<MainScreen> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(40),
-                          topRight: Radius.circular(40)),
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30)),
                     ),
                     width: double.infinity,
                     height: double.infinity,

@@ -4,9 +4,17 @@ import 'package:flutter/services.dart';
 import 'package:qatar_care/base/basic_scaffold.dart';
 import 'package:qatar_care/main.dart';
 
+import 'Clients/clients_screen.dart';
+import 'Guest/service_1.dart';
+import 'Staff/staff_screen.dart';
 import 'main_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget Textstyle(String text, Color color, FontWeight weight) {
     return Align(
@@ -22,13 +30,17 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
+  bool guest=true;
+  bool client=false;
+  bool staff=false;
+
   Widget build(BuildContext context) {
     final _height = MediaQuery.of(context).size.height;
     final _width = MediaQuery.of(context).size.width;
     final _fontstyles = 'Roboto sans-serif';
     return BasicScaffold(
       child: Container(
-        padding:EdgeInsets.only(top:MediaQuery.of(context).padding.top),
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         width: double.infinity,
         color: Color(0xFF7EAF3C),
         child: Column(
@@ -54,9 +66,9 @@ class LoginScreen extends StatelessWidget {
                       topRight: Radius.circular(40)),
                 ),
                 width: double.infinity,
-                height:double.infinity,
+                height: double.infinity,
                 child: Padding(
-                  padding: const EdgeInsets.only(top:20,left: 20, right: 20),
+                  padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -107,35 +119,43 @@ class LoginScreen extends StatelessWidget {
                               Material(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(22.0)),
-                                color: Color(0xFF7EAF3C),
+                                color: guest == true
+                                    ? Color(0xFF7EAF3C)
+                                    : Color(0xFFF0F0F0),
                                 clipBehavior: Clip.antiAlias,
                                 child: MaterialButton(
                                     minWidth: _width * 0.4,
                                     onPressed: () {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  MainScreen()));
+                                      setState(() {
+                                        guest = true;
+                                        client = false;
+                                        staff = false;
+                                      });
                                     },
-                                    textColor: Colors.white,
+                                    textColor: guest == true
+                                        ? Colors.white
+                                        : Color(0xFF707070),
                                     child: Text('GUEST')),
                               ),
                               Material(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(22.0)),
-                                color: Color(0xFFF0F0F0),
+                                color: client == true
+                                    ? Color(0xFF7EAF3C)
+                                    : Color(0xFFF0F0F0),
                                 clipBehavior: Clip.antiAlias,
                                 child: MaterialButton(
                                     minWidth: _width * 0.4,
                                     onPressed: () {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  MainScreen()));
+                                      setState(() {
+                                        guest = false;
+                                        client = true;
+                                        staff = false;
+                                      });
                                     },
-                                    textColor: Color(0xFF707070),
+                                    textColor: client == true
+                                        ? Colors.white
+                                        : Color(0xFF707070),
                                     child: Text('CLIENT')),
                               ),
                             ],
@@ -144,18 +164,22 @@ class LoginScreen extends StatelessWidget {
                         Material(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(22.0)),
-                          color: Color(0xFFF0F0F0),
+                          color: staff == true
+                              ? Color(0xFF7EAF3C)
+                              : Color(0xFFF0F0F0),
                           clipBehavior: Clip.antiAlias,
                           child: MaterialButton(
-                              minWidth:double.infinity,
+                              minWidth: double.infinity,
                               onPressed: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            MainScreen()));
+                                setState(() {
+                                  guest = false;
+                                  client = false;
+                                  staff = true;
+                                });
                               },
-                              textColor: Color(0xFF707070),
+                              textColor: staff == true
+                                  ? Colors.white
+                                  : Color(0xFF707070),
                               child: Text('STAFF')),
                         ),
                         Padding(
@@ -169,13 +193,35 @@ class LoginScreen extends StatelessWidget {
                                   padding: const EdgeInsets.only(bottom: 30),
                                   child: TextField(
                                     keyboardType: TextInputType.number,
+                                    onChanged: (text) {},
                                   ),
                                 ),
                                 Textstyle('Password', Color(0xFF832C3A),
                                     FontWeight.normal),
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 50),
-                                  child: TextField(obscureText: true),
+                                  child: TextField(
+                                    obscureText: true,
+                                    onChanged: (text) {
+                                      if (text == "1234") {
+                                        Widget Newpage;
+                                        if (guest == true) {
+                                          Newpage = ServiceScreenOne();
+                                        } else if (client == true) {
+                                          Newpage = ClientScreen();
+                                        } else {
+                                          Newpage = StaffScreen();
+                                        }
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MainScreen(
+                                                      pageName: Newpage,
+                                                    )));
+                                      }
+                                    },
+                                  ),
                                 ),
                                 Textstyle('Resend O T P ?', Color(0xFF7EAF3C),
                                     FontWeight.normal),

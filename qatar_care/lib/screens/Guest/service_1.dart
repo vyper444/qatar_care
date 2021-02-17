@@ -2,74 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'custom_expansion_tile.dart';
-import 'service_2.dart';
+import '../custom_components.dart';
+import '../custom_expansion_tile.dart';
+import '../Guest/service_2.dart';
+import '../main_screen.dart';
 
-class ServiceScreenTwo extends StatefulWidget {
+class ServiceScreenOne extends StatefulWidget {
   @override
-  _ServiceScreenTwoState createState() => _ServiceScreenTwoState();
+  _ServiceScreenOneState createState() => _ServiceScreenOneState();
 }
 
-class _ServiceScreenTwoState extends State<ServiceScreenTwo> {
-  Widget contactInformation(String label, String info) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.only(top: 15, bottom: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(label,
-              style:
-              TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
-          Text(info,
-              style: TextStyle(
-                  fontWeight: FontWeight.normal, color: Color(0xFF464552))),
-        ],
-      ),
-    );
-  }
-
-  Widget line(double Top,double Bottom) {
-    return Padding(
-      padding: EdgeInsets.only(top:Top, bottom:Bottom),
-      child: Divider(
-        color: Color(0xFFA9B8C1),
-      ),
-    );
-  }
-
-  Widget headings(String header) {
-    return Text(
-      header,
-      textAlign: TextAlign.left,
-      style: TextStyle(
-          color: Color(0xFF7EAF3C), fontWeight: FontWeight.bold, fontSize: 20),
-    );
-  }
-
-  Widget socialMediaIcons() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 8.0),
-      child: FaIcon(FontAwesomeIcons.instagram,
-          size: 20, color: Color(0xFF7EAF3C)),
-    );
-  }
-
-  Widget services(Widget page,String image){
-    return  GestureDetector(
-      onTap:(){
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                page));
-      },
-      child:Image.asset(image),
-    );
-  }
+class _ServiceScreenOneState extends State<ServiceScreenOne> {
 
   @override
   Widget build(BuildContext context) {
+    Custom custom=new Custom();
     final _height = MediaQuery
         .of(context)
         .size
@@ -87,7 +34,7 @@ class _ServiceScreenTwoState extends State<ServiceScreenTwo> {
             height: _height * 0.15,
             child: Image.asset("images/logo.png"),
           ),
-          line(0,20),
+          custom.line(0,20),
           Text(
             "Qatar Care is established on 2nd March 2007. We take immense pride in being the First "
                 "Company to provide home nursing and medical services in the state of Qatar. "
@@ -108,11 +55,11 @@ class _ServiceScreenTwoState extends State<ServiceScreenTwo> {
                   fontSize: 14),
             ),
           ),
-          line(20,0),
+          custom.line(20,0),
           ListTileTheme(
             contentPadding: EdgeInsets.all(0),
             child: CustomExpansionTile(
-              title: headings('Accreditations'),
+              title: custom.headings('Accreditations'),
               children: [
                 Text(
                   "Qatar Care is established on 2nd March 2007. We take immense pride in being the First "
@@ -137,20 +84,20 @@ class _ServiceScreenTwoState extends State<ServiceScreenTwo> {
               ],
             ),
           ),
-          line(0,20),
+          custom.line(0,20),
           Align(
             alignment: Alignment.topLeft,
-            child: headings('Services'),
+            child: custom.headings('Services'),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                services(ServiceScreenTwo(),"images/icons/icon1.png"),
-                services(ServiceScreenTwo(),"images/icons/icon_g_2.png"),
-                services(ServiceScreenTwo(),"images/icons/icon3.png"),
-                services(ServiceScreenTwo(),"images/icons/icon4.png"),
+                custom.services(ServiceScreenOne(),"images/icons/icon_g_1.png",context),
+                custom.services(ServiceScreenTwo(),"images/icons/icon2.png",context),
+                custom.services(ServiceScreenOne(),"images/icons/icon3.png",context),
+                custom.services(ServiceScreenOne(),"images/icons/icon4.png",context),
               ],
             ),
           ),
@@ -161,11 +108,11 @@ class _ServiceScreenTwoState extends State<ServiceScreenTwo> {
                 fontWeight: FontWeight.bold,
                 fontSize: 14),
           ),
-          line(20,0),
+          custom.line(20,0),
           ListTileTheme(
             contentPadding: EdgeInsets.all(0),
             child: CustomExpansionTile(
-              title: headings('CPD events'),
+              title: custom.headings('CPD events'),
               children: [
                 Text(
                   "Qatar Care is established on 2nd March 2007. We take immense pride in being the First "
@@ -190,19 +137,19 @@ class _ServiceScreenTwoState extends State<ServiceScreenTwo> {
               ],
             ),
           ),
-          line(0,10),
+          custom.line(0,10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              headings('Website'),
+              custom.headings('Website'),
               FaIcon(FontAwesomeIcons.globe, size: 20, color: Color(0xFF7EAF3C)),
             ],
           ),
-          line(20,20),
+          custom.line(20,20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              headings('Social Media'),
+              custom.headings('Social Media'),
               Row(
                 children: [
                   Padding(
@@ -224,15 +171,15 @@ class _ServiceScreenTwoState extends State<ServiceScreenTwo> {
               ),
             ],
           ),
-          line(20,20),
+          custom.line(20,20),
           Align(
             alignment: Alignment.topLeft,
-            child: headings('Contact us'),
+            child: custom.headings('Contact us'),
           ),
-          contactInformation('Call us', 'Phone: +(974) 4447 7789'),
-          contactInformation('Address',
+          custom.contactInformation('Call us', 'Phone: +(974) 4447 7789'),
+          custom.contactInformation('Address',
               '7th Floor, Unit 706, Al Qamra Holding Group,\nAl-Difaaf Street, Al-Sadd, Doha, Qatar'),
-          contactInformation('Email', 'info@qatarcare.net'),
+          custom.contactInformation('Email', 'info@qatarcare.net'),
         ],
       ),
     );
